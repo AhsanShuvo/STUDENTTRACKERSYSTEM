@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Login</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'fonts/linearicons/style.css' %}">
+	</head>
+
+	<body>
+
+		<div class="wrapper">
+			<div class="inner" style="width: 500px;">
+				<form action="/home" method="post">
+                    {% csrf_token %}
+					<h3>Log In</h3>
+                    <div class="form-holder">
+						<span class="lnr lnr-envelope"></span>
+						<input type="text" class="form-control" name="email" placeholder="Mail">
+					</div>
+
+					<div class="form-holder">
+						<span class="lnr lnr-lock"></span>
+						<input type="password" class="form-control" name="password" placeholder="Password">
+					</div>
+					<button type="submit">
+						<span>Sign In</span>
+					</button>
+                    <p style="color: red">{{ msg }}</p><br>
+                    <a style="float: right" href="/">Create new account</a>
+				</form>
+			</div>
+
+		</div>
+	</body>
+</html>
