@@ -15,12 +15,12 @@
 
 		<div class="wrapper">
 			<div class="inner" style="width: 500px;">
-				<form action="/home" method="post">
+				<form action="{% url 'Login' %}" method="post">
                     {% csrf_token %}
 					<h3>Log In</h3>
                     <div class="form-holder">
 						<span class="lnr lnr-envelope"></span>
-						<input type="text" class="form-control" name="email" placeholder="Mail">
+						<input type="text" class="form-control" name="username" placeholder="username">
 					</div>
 
 					<div class="form-holder">

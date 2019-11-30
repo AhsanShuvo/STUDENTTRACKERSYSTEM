@@ -1,9 +1,9 @@
-from django.urls import path
+from django.conf.urls import url,include
 from . import views
-
 urlpatterns = [
-    path('login',views.login, name='login'),
-    path('',views.index, name='index'),
-    path('home',views.home, name='home'),
-    path('signup',views.signup, name='signup'),
+    url(r'^$',views.index,name='index'),
+    url(r'^login/$',views.Login,name= 'Login'),
+    url(r'^signup/$',views.signup,name='signup'),
+    url(r'^logout/$',views.Logout,name='logout'),
+    url(r'^app/',include('webapp.urls'))
 ]
