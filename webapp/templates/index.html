@@ -1,1 +1,302 @@
-{{msg}}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Management System</title>
+
+    <!---Bootstrap CSS--->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!---Main CSS--->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type ="text/css">
+</head>
+
+<body>
+
+
+    <!--Header Area Start-->
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#"><img src="" class="img-fluid" alt="LOGO"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto align-items-center d-flex">
+                        <li class="nav-item active">
+                            <a class="nav-link first_item" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contest' %}">Contest</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'ranking'%}">Rank</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tutorial</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">login</a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+
+    <!---Header Area End--->
+
+    <!---Banner-area Start--->
+
+    <section style="background-image: url(images/banner-bg.jpg)" class="banner-area ">
+        <div class="banner-content">
+            <h1>Welcome To My Management System</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam repudiandae magnam eveniet qui.Asperiores provident aut, odio beatae, quibusdam impedit assumenda sapiente atque</p>
+        </div>
+    </section>
+
+    <!---Banner-area End--->
+
+    <sectipon>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="top-ranking-content">
+                        <h3 class="text-center">Top Ranking</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">username</th>
+                                    <th scope="col">cf_handle</th>
+                                    <th scope="col">Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%for x in profile%}
+                                  <tr>
+                                      <th scope="row">1</th>
+                                      <td>{{x.user.username}}</td>
+                                      <td>{{x.codeforces_id}}</td>
+                                      <td>{{x.points}}</td>
+                                  </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <button class="btn-danger float-right"><a href="{% url 'ranklist' %}">See All</a></button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="last-contest-list text-center">
+                        <h3 class="text-center">Last round:<span>{{LastRound}}</span></h3>
+                        <p>Winner: <span>{{winner}}</span></p>    
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contest-list-content">
+                        <h3 class="text-center">Contest List</h3>
+                        <ul>
+                            {% for con in contest %}
+                                <li>{{con.Name}}</li>
+                            {%endfor%}
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sectipon>
+
+    <section>
+
+        <div class="container py-5">
+  <div class="row">
+
+
+
+    <div class="col-xl-3 col-lg-6 mb-4">
+      <div class="bg-white rounded-lg p-5 shadow">
+        <h2 class="h6 font-weight-bold text-center mb-4">Overall progress</h2>
+
+        <!-- Progress bar 1 -->
+        <div class="progress mx-auto" data-value='80'>
+          <span class="progress-left">
+                        <span class="progress-bar border-primary"></span>
+          </span>
+          <span class="progress-right">
+                        <span class="progress-bar border-primary"></span>
+          </span>
+          <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+            <div class="h2 font-weight-bold">80<sup class="small">%</sup></div>
+          </div>
+        </div>
+        <!-- END -->
+
+        <!-- Demo info -->
+        <div class="row text-center mt-4">
+          <div class="col-6 border-right">
+            <div class="h4 font-weight-bold mb-0">28%</div><span class="small text-gray">Last week</span>
+          </div>
+          <div class="col-6">
+            <div class="h4 font-weight-bold mb-0">60%</div><span class="small text-gray">Last month</span>
+          </div>
+        </div>
+        <!-- END -->
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 mb-4">
+      <div class="bg-white rounded-lg p-5 shadow">
+        <h2 class="h6 font-weight-bold text-center mb-4">Work hours</h2>
+
+        <!-- Progress bar 2 -->
+        <div class="progress mx-auto" data-value='25'>
+          <span class="progress-left">
+                        <span class="progress-bar border-danger"></span>
+          </span>
+          <span class="progress-right">
+                        <span class="progress-bar border-danger"></span>
+          </span>
+          <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+            <div class="h2 font-weight-bold">25<sup class="small">%</sup></div>
+          </div>
+        </div>
+        <!-- END -->
+
+        <!-- Demo info-->
+        <div class="row text-center mt-4">
+          <div class="col-6 border-right">
+            <div class="h4 font-weight-bold mb-0">28%</div><span class="small text-gray">Last week</span>
+          </div>
+          <div class="col-6">
+            <div class="h4 font-weight-bold mb-0">60%</div><span class="small text-gray">Last month</span>
+          </div>
+        </div>
+        <!-- END -->
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 mb-4">
+      <div class="bg-white rounded-lg p-5 shadow">
+        <h2 class="h6 font-weight-bold text-center mb-4">Server time</h2>
+
+        <!-- Progress bar 3 -->
+        <div class="progress mx-auto" data-value='76'>
+          <span class="progress-left">
+                        <span class="progress-bar border-success"></span>
+          </span>
+          <span class="progress-right">
+                        <span class="progress-bar border-success"></span>
+          </span>
+          <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+            <div class="h2 font-weight-bold">76<sup class="small">%</sup></div>
+          </div>
+        </div>
+        <!-- END -->
+
+        <!-- Demo info -->
+        <div class="row text-center mt-4">
+          <div class="col-6 border-right">
+            <div class="h4 font-weight-bold mb-0">28%</div><span class="small text-gray">Last week</span>
+          </div>
+          <div class="col-6">
+            <div class="h4 font-weight-bold mb-0">60%</div><span class="small text-gray">Last month</span>
+          </div>
+        </div>
+        <!-- END -->
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 mb-4">
+      <div class="bg-white rounded-lg p-5 shadow">
+        <h2 class="h6 font-weight-bold text-center mb-4">Total overdue</h2>
+
+        <!-- Progress bar 4 -->
+        <div class="progress mx-auto" data-value='12'>
+          <span class="progress-left">
+                        <span class="progress-bar border-warning"></span>
+          </span>
+          <span class="progress-right">
+                        <span class="progress-bar border-warning"></span>
+          </span>
+          <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+            <div class="h2 font-weight-bold">12<sup class="small">%</sup></div>
+          </div>
+        </div>
+        <!-- END -->
+
+        <!-- Demo info -->
+        <div class="row text-center mt-4">
+          <div class="col-6 border-right">
+            <div class="h4 font-weight-bold mb-0">28%</div><span class="small text-gray">Last week</span>
+          </div>
+          <div class="col-6">
+            <div class="h4 font-weight-bold mb-0">60%</div><span class="small text-gray">Last month</span>
+          </div>
+        </div>
+        <!-- END -->
+      </div>
+    </div>
+  </div>
+</div>
+
+    </section>
+
+
+    <footer>
+        <p class="text-center">copyrights@ all rights reserved Mamun</p>
+    </footer>
+
+    <!---Bootstrap CDN--->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+
+<script>
+
+    $(function() {
+
+  $(".progress").each(function() {
+
+    var value = $(this).attr('data-value');
+    var left = $(this).find('.progress-left .progress-bar');
+    var right = $(this).find('.progress-right .progress-bar');
+
+    if (value > 0) {
+      if (value <= 50) {
+        right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
+      } else {
+        right.css('transform', 'rotate(180deg)')
+        left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
+      }
+    }
+
+  })
+
+  function percentageToDegrees(percentage) {
+
+    return percentage / 100 * 360
+
+  }
+
+});
+
+
+    </script>
+
+</body>
+
+</html>
