@@ -7,6 +7,15 @@ import requests
 from django.contrib.auth.decorators import login_required
 from accounts.models import Profile
 from .models import CONTEST
+import matplotlib
+from matplotlib import pylab
+from pylab import *
+import PIL
+from PIL import Image
+import io
+from io import BytesIO
+from django.http import HttpResponse
+
 @login_required
 def index(request):
     User_List  = User.objects.all()
@@ -81,4 +90,50 @@ def contest(request):
     return render(request,'contest.html',{})
 
 def ranking(request):
-    return render(request,'ranking.html',{})
+    dept = 'ALL'
+    profile= Profile.objects.order_by('-points')[:2]
+    contest=CONTEST.objects.all()
+    if dept == "ALL":
+        rank_profile= Profile.objects.order_by('-points').all()
+        context={
+            'rank_profile':rank_profile,
+           'profile':profile,
+           'contest':contest,
+        }
+        return render(request,'ranking.html',context)
+    elif dept == 'CSE':
+        rank_profile= Profile.objects.filter('CSE').order_by('-points').all()
+        context={
+            'rank_profile':rank_profile,
+           'profile':profile,
+           'contest':contest,
+        }
+        return render(request,'ranking.html',context)
+    else:
+        rank_profile= Profile.objects.filter('SWE').order_by('-points').all()
+        context={
+            'rank_profile':rank_profile,
+           'profile':profile,
+           'contest':contest,
+        }
+        return render(request,'ranking.html',context)
+
+def profile(request):
+    user = request.user 
+    user_profile=Profile.objects.get(user= user)
+    profile = Profile.objects.order_by('-points')[:2]
+    return render(request,'profile.html',{'profile':profile,'user_profile':user_profile})
+
+def showimage(reqeust):
+    plt.plot([1, 2, 3, 4], [3, 4, 3, 5])
+ 
+    xlabel('TotalContest')
+    ylabel('AvgSolve')
+    title('Perforance graph')
+    grid(True)
+
+    # Plot
+    buffer = BytesIO()
+    plt.savefig(buffer,format='png')
+    buffer.seek(0)
+    return HttpResponse(buffer.getvalue(),content_type="image/png")

@@ -61,85 +61,69 @@
 
     <!---Banner-area Start--->
     <div class="container">
-
-
-    <select class="browser-default custom-select"style="margin-top:50px;">
-    <option selected>Ranking By Department</option>
-    <option value="1">CSE</option>
-    <option value="2">SWE</option>
-    <option value="3">ALL</option>
-  </select>
+      <select class="browser-default custom-select"style="margin-top:50px;">
+      <option selected>Ranking By Department</option>
+      <option value="CSE">CSE</option>
+      <option value="SWE">SWE</option>
+      <option value="ALL" selected>ALL</option>
+      </select>
     </div>
-
-
 
     <!---Banner-area End--->
     <!-- Table -->
-    <div class="container"style="margin-top: 35px;">
-      <div class="row">
-        <div class="col-sm-3">
-          <table class="table table-bordered">
-  <thead>
-    <tr>
+<div class="container"style="margin-top: 35px;">
+  <div class="row">
+    <div class="col-sm-3">
+      <table class="table table-bordered">
+        <thead>
+            <tr>
 
-      <td colspan="2">Top list</td>
+              <td colspan="2">Top list</td>
 
-    </tr>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Point</th>
-    </tr>
+            </tr>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Point</th>
+            </tr>
 
-  </thead>
-  <tbody>
-
-    <tr>
-      <td>Jacob</td>
-      <td>4.00</td>
-    </tr>
-    <tr>
-      <td>Jacob</td>
-      <td>4.00</td>
-    </tr>
-    <tr>
-      <td>Jacob</td>
-      <td>4.00</td>
-    </tr>
-    <tr>
-      <td>Jacob</td>
-      <td>4.00</td>
-    </tr>
-    <tr>
-      <td>Jacob</td>
-      <td>4.00</td>
-    </tr>
-
-  </tbody>
-</table>
-        </div>
-        <div class="col-sm">
-          <form>
-          </select>
-          <label for="exampleFormControlInput1">List Contact</label>
-              <select class="form-control">
-              <option>Dropdown select</option>
-              </select>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">NAME:</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Text here">
+          </thead>
+          <tbody>
+            {%for x in profile%}
+            <tr>
+              <td>{{x.user.username}}</td>
+              <td>{{x.points}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+</div>
+<div  style="margin-top:35 px">
+  <div class="row">
+      <div class="col-sm">
+        <thead>
+          <tr>
+            <td colspan="3">Ranking</td>
+          </tr>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Points</th>
+            <th scope="col">red_mark</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for rp in rank_profile%}
+          <tr>
+            <td>{{rp.user.username}}</td>
+            <td>{{rp.points}}</td>
+            <td>{{rp.red_mark}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </div>
   </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">NAME 1:</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Text here">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">NAME 2:</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Text here">
-  </div>
- </from>
-        </div>
-        <div class="col-sm-3">
-          <table class="table table-bordered">
+</div>
+<div class="col-sm-3">
+  <table class="table table-bordered">
   <thead>
     <tr>
 
@@ -148,33 +132,15 @@
     </tr>
     <tr>
       <th scope="col">Name</th>
-
     </tr>
 
   </thead>
   <tbody>
-
+    {%for con in contest%}
     <tr>
-      <td>Jacob</td>
-
+      <td>{{con.Name}}</td>
     </tr>
-    <tr>
-      <td>Jacob</td>
-
-    </tr>
-    <tr>
-      <td>Jacob</td>
-
-    </tr>
-    <tr>
-      <td>Jacob</td>
-
-    </tr>
-    <tr>
-      <td>Jacob</td>
-
-    </tr>
-
+    {% endfor %}
   </tbody>
   </table>
   <button type="button" class="btn btn-primary btn-xs">see all</button>

@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +12,7 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!---Main CSS--->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="% static 'css/style.css' %">
 </head>
 
 <body>
@@ -19,41 +20,39 @@
 
     <!--Header Area Start-->
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#"><img src="" class="img-fluid" alt="LOGO"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto align-items-center d-flex">
+                        <li class="nav-item active">
+                            <a class="nav-link first_item" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contest' %}">Contest</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'ranking'%}">Rank</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                        </li> 
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tutorial</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">login</a>
+                        </li>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
 
 
 
@@ -85,11 +84,11 @@
                                          </div>
                                          <div class="userData ml-3">
                                            <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);">Jhony Mehedi</a></h2>
-                                           <h6 class="d-block"><a href="javascript:void(0)">Email:</a> abc@gmail.com</h6>
-                                           <h6 class="d-block"><a href="javascript:void(0)">Department:</a> CSE</h6>
-                                           <h6 class="d-block"><a href="javascript:void(0)">Point:</a> 4.00</h6>
-                                           <h6 class="d-block"><a href="javascript:void(0)">solve:</a> 5%</h6>
-                                           <h6 class="d-block"><a href="javascript:void(0)">Read:</a> 10%</h6>
+                                           <h6 class="d-block"><a href="javascript:void(0)">Email:</a> jhoney13-34@gmail.com</h6>
+                                           <h6 class="d-block"><a href="javascript:void(0)">Department:</a> SWE</h6>
+                                           <h6 class="d-block"><a href="javascript:void(0)">Point:</a> 2130</h6>
+                                           <h6 class="d-block"><a href="javascript:void(0)">cf_handle:</a>_jhoney_</h6>
+                                           <h6 class="d-block"><a href="javascript:void(0)">TotalSolve:</a>33</h6>
                                          </div>
                                          <div class="ml-auto">
                                              <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
@@ -116,17 +115,17 @@
                                                          <label style="font-weight:bold;">Full Name</label>
                                                      </div>
                                                      <div class="col-md-8 col-6">
-                                                         Jamshaid Kamran
+                                                         Jhoney Mehedi
                                                      </div>
                                                  </div>
                                                  <hr />
 
                                                  <div class="row">
                                                      <div class="col-sm-3 col-md-2 col-5">
-                                                         <label style="font-weight:bold;">Birth Date</label>
+                                                         <label style="font-weight:bold;">Rank in DIU</label>
                                                      </div>
                                                      <div class="col-md-8 col-6">
-                                                         March 22, 1994.
+                                                         3
                                                      </div>
                                                  </div>
                                                  <hr />
@@ -134,10 +133,10 @@
 
                                                  <div class="row">
                                                      <div class="col-sm-3 col-md-2 col-5">
-                                                         <label style="font-weight:bold;">address</label>
+                                                         <label style="font-weight:bold;">Points</label>
                                                      </div>
                                                      <div class="col-md-8 col-6">
-                                                         Something
+                                                         2130
                                                      </div>
                                                  </div>
 
@@ -174,36 +173,12 @@
 
   </thead>
   <tbody>
-
+    {% for x in profile %}
     <tr>
-      <td>Jacob</td>
-      <td>4.00</td>
+      <td>{{x.user.username}}</td>
+      <td>{{x.points}}</td>
     </tr>
-    <tr>
-      <td>Jacob</td>
-      <td>4.00</td>
-    </tr>
-    <tr>
-      <td>Jacob</td>
-      <td>4.00</td>
-    </tr>
-    <tr>
-      <td>Jacob</td>
-      <td>4.00</td>
-    </tr>
-    <tr>
-      <td>Jacob</td>
-      <td>4.00</td>
-    </tr>
-    <tr>
-      <td>Jacob</td>
-      <td>4.00</td>
-    </tr>
-    <tr>
-      <td>Jacob</td>
-      <td>4.00</td>
-    </tr>
-
+    {%endfor%}
   </tbody>
 </table>
         </div>
@@ -214,33 +189,11 @@
 <div class="container"style="padding: 80px;margin: 80px;">
   <div class="card text-center">
   <div class="card-header">
-    Featured
+    Performance Graph
   </div>
-  <div class="row">
-
-        <div class="col-md-6 col-sm-6" style="padding:50px;">
-            <div class="progress yellow">
-                <span class="progress-left">
-                    <span class="progress-bar"></span>
-                </span>
-                <span class="progress-right">
-                    <span class="progress-bar"></span>
-                </span>
-                <div class="progress-value">75%</div>
-            </div>
-    </div>
-
-    <div class="col-5"style="padding: 50px!important;">
-      <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-
+  <div>
+      <img src="{% url 'showimage' %}" alt="">
   </div>
-
-
-
-
   <div class="card-footer text-muted">
     Structure Details
   </div>
